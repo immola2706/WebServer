@@ -7,21 +7,6 @@ try {
             checkout scm
         }
     }
-
-
-    stages {
-
-        stage('terraform started') {
-            steps {
-                sh 'echo "Started...!" '
-            }
-        }
-        stage('git clone') {
-            steps {
-                sh 'sudo rm -r *;sudo git clone https://github.com/immola2706/WebServer.git'
-            }
-        }
-
 // Run terraform init
     stage('init') {
         node {
@@ -29,7 +14,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sh 'sudo /home/ec2-user/terraform init'
+                sh sudo '/home/ec2-user/terraform init'
             }
         }
     }
