@@ -15,7 +15,7 @@ resource "aws_instance" "Terraform" {
 	ami = "ami-0e01ce4ee18447327"
 	count = "2"
 	key_name = "Terraform"
-	vpc_security_group_ids = ["${aws_security_group.default.id}"]
+	vpc_security_group_ids = ["${aws_security_group.Terraform.id}"]
 	instance_type = "t2.micro"
 	tags = {
 	Name = "Terraform-default"  
