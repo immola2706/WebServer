@@ -15,9 +15,11 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
+                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform init ./jenkins'
+                    sh 'terraform init'
                 }
             }
         }
@@ -29,9 +31,11 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
+                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform plan ./jenkins'
+                    sh 'terraform plan'
                 }
             }
         }
@@ -44,6 +48,8 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
+                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
                     sh 'terraform apply -auto-approve'
@@ -57,6 +63,8 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
+                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
              ]]) {
                 ansicolor('xterm') {
                     sh 'terraform show'
