@@ -2,17 +2,17 @@ terraform {
 	backend "s3" {
 		bucket = "terraform-bucket-new"
 		key = "terraform.tfstate"
-		region = "var.region"
+		region = "us-east-2"
 	}
 }
 // use AWS terraform provider
 provider "aws" {
-	region = "var.region"
+	region = "us-east-2"
 }
 
 // Create EC2 Instance
 resource "aws_instance" "default" {
-	ami	= "var.ami"
+	ami = "var.ami"
 	count = 2
 	key_name = "Terraform"
 	vpc_security_group_ids = ["${aws_security_group.default.id}"]

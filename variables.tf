@@ -11,7 +11,7 @@ variable "ssh_port" {
 	description = "ssh request to server  "
 	default = "22"
 }
-variable "instance_type" { 
+variable "instance_type" {
 	description = "AWS ec2 instance type"
 	default = "t2.micro"
 }
