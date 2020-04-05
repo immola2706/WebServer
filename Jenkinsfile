@@ -16,7 +16,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
-                secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
+                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
                     sh 'terraform init'
@@ -32,7 +32,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
-                secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
+                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
                     sh 'terraform plan'
@@ -49,7 +49,7 @@ if (env.Branch_Name == 'master') {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
-                secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
+                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
                     sh 'terraform apply -auto-approve'
@@ -64,7 +64,7 @@ if (env.Branch_Name == 'master') {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
-                secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
+                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
                     sh 'terraform show'
