@@ -30,6 +30,17 @@ try {
             }
         }
     }
+// Run terraform validate
+    stage('validate') {
+        node {
+            withCredentials([[
+                $class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: 'awsCredentials',
+            ]]) {
+                sh '/usr/local/bin/terraform validate'
+            }
+        }
+    }
 
 // Run terraform apply
     stage('apply') {
