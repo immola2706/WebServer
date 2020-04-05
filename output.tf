@@ -1,3 +1,3 @@
 output "public_ip" {
-    value = "${aws_instance.hello-world.public_ip}"
+    value = "${aws_instance.Terraform-default.public_ip}"
 }

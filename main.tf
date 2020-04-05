@@ -2,18 +2,46 @@ terraform {
 	backend "s3" {
 		bucket = "terraform-bucket-new"
 		key = "terraform.tfstate"
-		region = "us-east-2"
+		region = "${var.region}"
 	}
 }
-
-resource "aws_instance" "hello-world" {
-
- ami = "ami-0a313d6098716f372" 
- instance_type = "t2.micro"
- vpc_security_group_ids = "vpc-0167570d158057e01"
- key_name = "terraform"
- tags = {
-	 Name = "Hello world"
- }
-
+// use AWS terraform provider
+provider "aws" {
+	region = "${var.region}"  
 }
+
+// Create EC2 Instance
+resource "aws_instance" "default" {
+	ami	= "${var.ami}"
+	count = "${var.count}"
+	key_name = "Terraform"
+	vpc_security_group_ids = ["${aws_security_group.default.id}"]
+	instance_type = "${var.instance_type}"
+	tags = {
+	 Name = "Terraform-default"  
+}
+}
+// Create Security Group for EC2
+resource "aws_security_group" "default" {
+	name = "Terraform-default-sg"
+
+	ingress {
+		from_port = "${var.http_port}"
+		to_port = "${var.http_port}"
+		protocol = "tcp"
+		cidr_blocks = ["0.0.0.0/0"]
+		}
+	
+	ingress {
+		from_port = "${var.ssh_port}"
+		to_port = "${var.ssh_port}"
+		protocol = "tcp"
+		cidr_blocks = ["0.0.0.0/0"]
+		} 
+}
+
+
+
+
+
+
