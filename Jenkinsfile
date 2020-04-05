@@ -14,7 +14,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sh '/var/lib/jenkins/workspace/PipelineNew_master/terraform init'
+                sh 'terraform init'
             }
         }
     }
