@@ -14,7 +14,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'sudo /var/lib/jenkins/terraform init'"
+                "sh 'sudo /var/lib/jenkins/workspace/PipelineNew_master/terraform init'"
             }
         }
     }
@@ -26,7 +26,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'sudo /var/lib/jenkins/terraform plan"
+                "sh 'sudo /var/lib/jenkins/workspace/PipelineNew_master/terraform plan"
             }
         }
     }
@@ -38,7 +38,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'sudo /var/lib/jenkins/terraform apply -auto-approve'"
+                "sh 'sudo /var/lib/jenkins/workspace/PipelineNew_master/terraform apply -auto-approve'"
             }
         }
     }
@@ -49,7 +49,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
              ]]) {
-                "sh 'sudo /var/lib/jenkins/terraform show'"
+                "sh 'sudo /var/lib/jenkins/workspace/PipelineNew_master/terraform show'"
             }
         }
     }
