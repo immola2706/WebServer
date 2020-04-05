@@ -1,4 +1,4 @@
-string credentialsId = 'awsCredentials'
+String credentialsId = 'awsCredentials'
 
 try {
     stage ('checkout') {
@@ -13,7 +13,7 @@ try {
     stage ('init') {
         node {
             withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding,
+                $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
                 secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
@@ -29,7 +29,7 @@ try {
     stage ('plan') {
         node {
             withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding,
+                $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
                 secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
@@ -46,7 +46,7 @@ if (env.Branch_Name == 'master') {
     stage ('apply') {
         node {
             withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding,
+                $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
                 secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
@@ -61,7 +61,7 @@ if (env.Branch_Name == 'master') {
     stage ('show') {
         node {
             withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding,
+                $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: credentialsId,
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID'
                 secretKeyVariable: 'AWS_SECREET_ACCESS_KEY'
