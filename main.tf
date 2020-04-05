@@ -11,8 +11,8 @@ provider "aws" {
 }
 
 // Create EC2 Instance
-resource "aws_instance" "default" {
-	ami = "ami-0a313d6098716f372"
+resource "aws_instance" "Terraform" {
+	ami = "ami-0e01ce4ee18447327"
 	count = "2"
 	key_name = "Terraform"
 	vpc_security_group_ids = ["${aws_security_group.default.id}"]
@@ -22,7 +22,7 @@ resource "aws_instance" "default" {
 }
 }
 // Create Security Group for EC2
-resource "aws_security_group" "default" {
+resource "aws_security_group" "Webserver-sg" {
 	name = "Terraform-default-sg"
 
 	ingress {
