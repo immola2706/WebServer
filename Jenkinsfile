@@ -8,6 +8,20 @@ try {
         }
     }
 
+
+    stages {
+
+        stage('terraform started') {
+            steps {
+                sh 'echo "Started...!" '
+            }
+        }
+        stage('git clone') {
+            steps {
+                sh 'sudo rm -r *;sudo git clone https://github.com/immola2706/WebServer.git'
+            }
+        }
+
 // Run terraform init
     stage('init') {
         node {
@@ -70,4 +84,5 @@ finally {
     if (currentBuild.result == 'Success') {
        currentBuild.result = 'Success' 
     }
+}
 }
