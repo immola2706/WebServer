@@ -1,3 +1,11 @@
+terraform {
+	backend "s3" {
+		bucket = "terraform-bucket-new"
+		key = "terraform.tfstate"
+		region = "us-east-2"
+	}
+}
+
 resource "aws_instance" "hello-world" {
 
  ami = "ami-0a313d6098716f372" 
