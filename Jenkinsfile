@@ -19,7 +19,7 @@ try {
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform init'
+                    sh 'sudo /home/ec2-user/terraform init ./jenkins'
                 }
             }
         }
@@ -35,7 +35,7 @@ try {
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform plan'
+                    sh 'ls ./jenkins; sudo /home/ec2-user/terraform plan ./jenkins'
                 }
             }
         }
@@ -52,7 +52,7 @@ try {
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform apply -auto-approve'
+                    sh 'sudo /home/ec2-user/terraform apply -auto-approve'
                 }
             }
         }
@@ -67,7 +67,7 @@ try {
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform show'
+                    sh 'sudo /home/ec2-user/terraform show'
                 }
             }
         }
