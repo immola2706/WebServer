@@ -14,7 +14,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'sudo /home/ec2-user/terraform init'"
+                "sh 'sudo /var/lib/jenkins/terraform init'"
             }
         }
     }
@@ -26,7 +26,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'ls ./jenkins; sudo /home/ec2-user/terraform plan ./jenkins"
+                "sh 'sudo /var/lib/jenkins/terraform plan"
             }
         }
     }
@@ -38,7 +38,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'sudo /home/ec2-user/terraform apply -auto-approve'"
+                "sh 'sudo /var/lib/jenkins/terraform apply -auto-approve'"
             }
         }
     }
@@ -49,7 +49,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
              ]]) {
-                "sh 'sudo /home/ec2-user/terraform show'"
+                "sh 'sudo /var/lib/jenkins/terraform show'"
             }
         }
     }
