@@ -20,7 +20,3 @@ variable "ami" {
 description = "amazon machine image"
 default = "ami-0a313d6098716f372"
 }
-
-variable "count" {
-default = "2"
-}
