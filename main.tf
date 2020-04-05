@@ -12,11 +12,11 @@ provider "aws" {
 
 // Create EC2 Instance
 resource "aws_instance" "default" {
-	ami = "var.ami"
-	count = 2
+	ami = "ami-0a313d6098716f372"
+	count = "2"
 	key_name = "Terraform"
 	vpc_security_group_ids = ["${aws_security_group.default.id}"]
-	instance_type = "var.instance_type"
+	instance_type = "t2.micro"
 	tags = {
 	Name = "Terraform-default"  
 }
@@ -26,15 +26,15 @@ resource "aws_security_group" "default" {
 	name = "Terraform-default-sg"
 
 	ingress {
-		from_port = ["${var.http_port}"]
-		to_port = ["${var.http_port}"]
+		from_port = "80"
+		to_port = "80"
 		protocol = "tcp"
 		cidr_blocks = ["0.0.0.0/0"]
 		}
 	
 	ingress {
-		from_port = ["${var.ssh_port}"]
-		to_port = ["${var.ssh_port}"]
+		from_port = "22"
+		to_port = "22"
 		protocol = "tcp"
 		cidr_blocks = ["0.0.0.0/0"]
 		} 
