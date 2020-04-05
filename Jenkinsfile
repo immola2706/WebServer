@@ -8,18 +8,15 @@ try {
         }
     }
 
-
 // Run terraform init
     stage('init') {
         node {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform init'
+                    sh '/home/ec2-user/terraform init'
                 }
             }
         }
@@ -31,11 +28,9 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform plan'
+                    sh '/home/ec2-user/terraform plan'
                 }
             }
         }
@@ -48,11 +43,9 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform apply -auto-approve'
+                    sh '/home/ec2-user/terraform apply -auto-approve'
                 }
             }
         }
@@ -63,11 +56,9 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                AccessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                SecretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
              ]]) {
                 ansicolor('xterm') {
-                    sh 'terraform show'
+                    sh '/home/ec2-user/terraform show'
                 }
             }
         }
