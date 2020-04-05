@@ -19,17 +19,6 @@ try {
         }
     }
 
-// Run terraform plan
-    stage('plan') {
-        node {
-            withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: 'awsCredentials',
-            ]]) {
-                sh '/usr/local/bin/terraform plan'
-            }
-        }
-    }
 // Run terraform validate
     stage('validate') {
         node {
@@ -38,6 +27,19 @@ try {
                 credentialsId: 'awsCredentials',
             ]]) {
                 sh '/usr/local/bin/terraform validate'
+            }
+        }
+    }
+
+
+// Run terraform plan
+    stage('plan') {
+        node {
+            withCredentials([[
+                $class: 'AmazonWebServicesCredentialsBinding',
+                credentialsId: 'awsCredentials',
+            ]]) {
+                sh '/usr/local/bin/terraform plan'
             }
         }
     }
