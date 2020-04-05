@@ -14,7 +14,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sh "terraform init"
+                "sh sudo /home/ec2-user/terraform plan"
             }
         }
     }
