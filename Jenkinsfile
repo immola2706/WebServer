@@ -16,7 +16,7 @@ try {
                 credentialsId: 'awsCredentials',
             ]]) {
                 ansicolor('xterm') {
-                    sh '/home/ec2-user/terraform init'
+                sh 'terraform init'
                 }
             }
         }
@@ -30,7 +30,7 @@ try {
                 credentialsId: 'awsCredentials',
             ]]) {
                 ansicolor('xterm') {
-                    sh '/home/ec2-user/terraform plan'
+                sh 'terraform plan'
                 }
             }
         }
@@ -45,7 +45,7 @@ try {
                 credentialsId: 'awsCredentials',
             ]]) {
                 ansicolor('xterm') {
-                    sh '/home/ec2-user/terraform apply -auto-approve'
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }
@@ -58,7 +58,7 @@ try {
                 credentialsId: 'awsCredentials',
              ]]) {
                 ansicolor('xterm') {
-                    sh '/home/ec2-user/terraform show'
+                    sh 'terraform show'
                 }
             }
         }
