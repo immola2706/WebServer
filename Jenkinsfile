@@ -15,9 +15,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                ansicolor('xterm') {
                 sh 'terraform init'
-                }
             }
         }
     }
@@ -29,9 +27,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                ansicolor('xterm') {
                 sh 'terraform plan'
-                }
             }
         }
     }
@@ -44,9 +40,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                ansicolor('xterm') {
-                    sh 'terraform apply -auto-approve'
-                }
+                sh 'terraform apply -auto-approve'
             }
         }
     }
@@ -57,9 +51,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
              ]]) {
-                ansicolor('xterm') {
-                    sh 'terraform show'
-                }
+                sh 'terraform show'
             }
         }
     }
