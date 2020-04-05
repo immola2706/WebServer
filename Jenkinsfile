@@ -14,8 +14,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                'sudo su -'
-                sh 'terraform init -input=false -plugin-dir=/usr/lib/custom-terraform-plugins'
+                sh '/usr/local/bin/terraform init'
             }
         }
     }
@@ -27,7 +26,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sh 'terraform plan'
+                sh '/usr/local/bin/terraform plan'
             }
         }
     }
@@ -39,7 +38,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sh 'terraform apply -auto-approve'
+                sh '/usr/local/bin/terraform apply -auto-approve'
             }
         }
     }
@@ -50,7 +49,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
              ]]) {
-                sh 'terraform show'
+                sh '/usr/local/bin/terraform show'
             }
         }
     }
