@@ -26,7 +26,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'terraform plan'"
+                sh terraform init
             }
         }
     }
