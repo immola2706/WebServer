@@ -14,8 +14,8 @@ try {
         node {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: credentialsId,
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID'
+                credentialsId: 'awsCredentials',
+                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
@@ -30,8 +30,8 @@ try {
         node {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: credentialsId,
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID'
+                credentialsId: 'awsCredentials',
+                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
@@ -41,14 +41,14 @@ try {
         }
     }
 
-if (env.Branch_Name == 'master') {
+    if (env.BRANCH_NAME == 'master') {
 // Run terraform apply
     stage ('apply') {
         node {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: credentialsId,
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID'
+                credentialsId: 'awsCredentials',
+                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
@@ -62,8 +62,8 @@ if (env.Branch_Name == 'master') {
         node {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: credentialsId,
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID'
+                credentialsId: 'awsCredentials',
+                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) {
                 ansicolor('xterm') {
