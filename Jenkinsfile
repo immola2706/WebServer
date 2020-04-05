@@ -14,7 +14,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sudo sh 'terraform init'
+                sudo chmod +x 'terraform init'
             }
         }
     }
