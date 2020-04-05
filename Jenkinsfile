@@ -15,12 +15,9 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
-                region: 'us-east-2'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'sudo /home/ec2-user/terraform init ./jenkins'
+                    sh 'terraform init ./jenkins'
                 }
             }
         }
@@ -32,12 +29,9 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
-                region: 'us-east-2'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'ls ./jenkins; sudo /home/ec2-user/terraform plan ./jenkins'
+                    sh 'terraform plan ./jenkins'
                 }
             }
         }
@@ -50,12 +44,9 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
-                region: 'us-east-2'
             ]]) {
                 ansicolor('xterm') {
-                    sh 'sudo /home/ec2-user/terraform apply -auto-approve'
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }
@@ -66,12 +57,9 @@ try {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-                accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
-                region: 'us-east-2'
-            ]]) {
+             ]]) {
                 ansicolor('xterm') {
-                    sh 'sudo /home/ec2-user/terraform show'
+                    sh 'terraform show'
                 }
             }
         }
