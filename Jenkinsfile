@@ -79,9 +79,9 @@ currentBuild.result = 'Success'
 catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException flowError) {
     currentBuild.result = 'Aborted'
 }
-catch (error) {
+catch ('error') {
     currentBuild.result = 'Failure'
-    throw err
+    throw error
 }
 finally {
     if (currentBuild.result == 'Success') {
