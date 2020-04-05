@@ -31,7 +31,6 @@ try {
         }
     }
 
-    if (env.BRANCH_NAME == 'master') {
 // Run terraform apply
     stage('apply') {
         node {
@@ -54,7 +53,7 @@ try {
             }
         }
     }
-}
+
 
 currentBuild.result = 'Success'
 }
