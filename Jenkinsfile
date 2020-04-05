@@ -26,7 +26,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                "sh 'sudo /var/lib/jenkins/workspace/PipelineNew_master/terraform plan"
+                "sh '/var/lib/jenkins/workspace/PipelineNew_master/terraform plan"
             }
         }
     }
