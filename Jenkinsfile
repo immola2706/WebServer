@@ -15,7 +15,7 @@ try {
                 credentialsId: 'awsCredentials',
             ]]) {
                 'sudo su -'
-                sh 'terraform init'
+                sh 'terraform init -input=false -plugin-dir=/usr/lib/custom-terraform-plugins'
             }
         }
     }
