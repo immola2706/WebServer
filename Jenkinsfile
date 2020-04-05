@@ -26,7 +26,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sh 'terraform plan'
+                "sh 'sudo /home/ec2-user/terraform plan'"
             }
         }
     }
@@ -39,7 +39,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
             ]]) {
-                sh 'terraform apply -auto-approve'
+                "sh 'sudo /home/ec2-user/terraform apply -auto-approve'"
             }
         }
     }
@@ -50,7 +50,7 @@ try {
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
              ]]) {
-                sh 'terraform show'
+                "sh 'sudo /home/ec2-user/terraform show'"
             }
         }
     }
