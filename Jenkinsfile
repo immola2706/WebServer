@@ -1,71 +1,42 @@
-String credentialsId = 'awsCredentials'
-
-try {
-    stage('checkout') {
-        node {
-            cleanWs()
-            checkout scm
-        }
-    }
-// Run terraform init
-    stage('init') {
+pipeline {
+    agent {
         node {
             withCredentials([[
                 $class: 'AmazonWebServicesCredentialsBinding',
                 credentialsId: 'awsCredentials',
-            ]]) {
-                "sh sudo /home/ec2-user/terraform plan"
-            }
+            ]]) 
+            label 'master'
         }
     }
 
-// Run terraform plan
-    stage('plan') {
-        node {
-            withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: 'awsCredentials',
-            ]]) {
-                "sh 'sudo /home/ec2-user/terraform plan'"
+    stages {
+
+        stage('terraform started') {
+            steps {
+                sh 'echo "Started...!" '
             }
         }
-    }
-
-// Run terraform apply
-    stage('apply') {
-        node {
-            withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: 'awsCredentials',
-            ]]) {
-                "sh 'sudo /home/ec2-user/terraform apply -auto-approve'"
+        stage('git clone') {
+            steps {
+                sh 'sudo rm -r *;sudo git clone https://github.com/immola2706/Webserver.git'
             }
         }
-    }
-// Run terraform show
-    stage('show') {
-        node {
-            withCredentials([[
-                $class: 'AmazonWebServicesCredentialsBinding',
-                credentialsId: 'awsCredentials',
-             ]]) {
-                "sh 'sudo /home/ec2-user/terraform show'"
+        stage('terraform init') {
+            steps {
+                sh 'sudo /home/ec2-user/terraform init ./jenkins'
             }
         }
-    }
+        stage('terraform plan') {
+            steps {
+                sh 'ls ./jenkins; sudo /home/ec2-user/terraform plan ./jenkins'
+            }
+        }
+        stage('terraform ended') {
+            steps {
+                sh 'echo "Ended....!!"'
+            }
+        }
 
-
-currentBuild.result = 'Success'
-}
-catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException flowError) {
-    currentBuild.result = 'Aborted'
-}
-catch (error) {
-    currentBuild.result = 'Failure'
-    throw error
-}
-finally {
-    if (currentBuild.result == 'Success') {
-       currentBuild.result = 'Success' 
+        
     }
 }
